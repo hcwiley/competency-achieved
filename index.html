@@ -1,0 +1,262 @@
+<html>
+  <head>
+    <title>Skuba Test</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js" type='text/javascript'></script>
+    <script src="https://raw.github.com/thatcher/jquery-loremipsum/master/jquery.loremipsum.js" type='text/javascript'></script>
+    <link rel="shortcut icon" href="http://hcwiley.com/media/images/favicon.gif"/>
+    <style>
+      *, html, body{
+        margin: 0;
+        padding: 0;
+        border: 0;
+        font-family: Helvetica, san-serif;
+      }
+      a{
+        color: #7F0000;
+        text-decoration: none;
+      }
+      body, html{
+        width: 100%;
+        height: 100%;
+      }
+      header{
+        height: 25px;
+        width: 100%;
+        padding: 5px 20px;
+      }
+      header a{
+        color :#fff;
+      }
+      #container{
+        width: 1300px;
+        height: auto;
+        margin: 50px auto;
+      }
+      #users{
+        width: 1150px;
+        float:left;
+        height: auto;
+      }
+      #removed{
+        float: right;
+        width: 150px;
+      }
+      .user{
+        width: 300px;
+        height: 300px;
+        float: left;
+        display: inline-block;
+        margin: 20px;
+        padding: 10px;
+        padding-top: 0px;
+        background-color: rgba(220,220,220,.7);
+        text-align: center;
+        /* rounded */
+        -moz-border-radius: 4px;
+        -webkit-border-radius: 4px;
+        -khtml-border-radius: 4px;
+      }
+      .user img{
+        float: left;
+        text-align: left;
+        width: 50px;
+        height: 50px;
+      }
+      .user h3, .user h4{
+        color: #BF0000;
+        display: inline;
+        position: relative;
+        top: 5px;
+      }
+      .user h4{
+        font-variant: small-caps;
+        color: #7f0000;
+        font-size: 16px;
+        top: 3px;
+      }
+      .user .date{
+        position: relative;
+        left: 20px;
+        top: 10px;
+      }
+      .user .user-header{
+        padding-top: 10px;
+        height: 50px;
+        border-bottom: 1px solid #BF0000;
+        margin-bottom: 5px;
+      }
+      .user p{
+        font-size: 14px;
+        text-align: left;
+      }
+      .user .bio{
+        display:block;
+        height: 200px;
+      }
+      .template{
+        display: none;
+        visibility: none;
+      }
+      button{
+        width: 90px;
+        height: 25px;
+        margin: 3px;
+        /* rounded */
+        -moz-border-radius: 4px;
+        -webkit-border-radius: 4px;
+        -khtml-border-radius: 4px;
+        border-radius: 4px #ededed;
+        font-variant: small-caps;
+        font-size: 14px;
+      }
+      .unremove{
+        width: 110px;
+        height: 30px;
+        margin: 5px;
+        color: #7f0000;
+        /* For WebKit (Safari, Google Chrome etc) */
+        background: -webkit-gradient(linear, left top, left bottom, from(#e2d6c2), to(#F6EDD8), color-stop(0.7, #F6EDD8));
+        /* For Mozilla/Gecko (Firefox etc)*/
+        background: -moz-linear-gradient(left bottom, #e2d6c2, #F6EDD8 70%);
+        /* For Internet Explorer 5.5 - 7*/
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=#FF0000FF, endColorStr=#FFFFFFFF, GradientType=1);
+        /* For Internet Explorer 8*/
+        -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#FF0000FF, endColorstr=#FFFFFFFF, GradientType=1)";
+      }
+      .red-gradient{
+        /*Gradient code*/
+        color: #FFFFFF;
+        /* For WebKit (Safari, Google Chrome etc) */
+        background: -webkit-gradient(linear, left top, left bottom, from(#7f0000), to(#bf0000), color-stop(0.7, #bf0000));
+        /* For Mozilla/Gecko (Firefox etc)*/
+        background: -moz-linear-gradient(left bottom, #7f0000, #bf0000 70%);
+        /* For Internet Explorer 5.5 - 7*/
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=#FF0000FF, endColorStr=#FFFFFFFF, GradientType=1);
+        /* For Internet Explorer 8*/
+        -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#FF0000FF, endColorstr=#FFFFFFFF, GradientType=1)";
+      }
+      #popup{
+        display: none;
+        position: fixed;
+        top: 30%;
+        left: 37%;
+        width: 200px;
+        height: 100px;
+        background-color: #E2D6C2;
+        -moz-box-shadow: 3px 3px 4px #444;
+        -webkit-box-shadow: 3px 3px 4px #444;
+        box-shadow: 3px 3px 4px #444;
+        z-index: 2;
+        -moz-border-radius: 4px;
+        -webkit-border-radius: 4px;
+        -khtml-border-radius: 4px;
+        border-radius: 4px #ededed;
+        padding: 40px;
+      }
+
+    </style>
+  </head>
+  <body>
+  <header class='red-gradient'>
+    <a href='http://en.wikipedia.org/wiki/Foobar'>
+      <h3>FooBar Inc.</h3>
+    </a>
+  </header>
+  <div id='container'>
+    <div id='popup'>
+      <h3><span class='name'></span> has successfully been removed</h3>
+    </div>
+    <div id='users'>
+      <h2>Users in group 1</h2>
+      <div class='user template'>
+        <div class='user-header'>
+          <img src='', width=50, height=50 />
+          <a href="/USER_PAGE">
+            <h3><span class='name'></span><h4 class='title'></h4></h3>
+          </a>
+          <p class='date'></p>
+        </div>
+        <p class='bio'>
+        </p>
+        <button class='red-gradient'>remove user</button>
+      </div>
+    </div> 
+    <div id='removed'>
+      <h4>Removed Users<h4>
+    </div>
+  </div> 
+  <script type='text/javascript'>
+    var titles = ['organizer', 'co-organizer', 'assistant organizer', 'event organizer', ''];
+    var removedUsers = {};
+    function randomTitle(){
+      var title = titles[Math.floor(Math.random() * 10) % titles.length];
+      if(title !== "")
+        return " [ "+ title +" ]";
+      else
+        return ""
+    }
+    function randomImage(){
+      var src = (Math.floor(Math.random() * 10) % 5) + 1;
+      return "user"+src+".svg"
+    }
+    function randomDate(){
+      start = new Date(2012 - (Math.floor(Math.random() * 40) % 20), 0, 1)
+      end = new Date(2012 - (Math.floor(Math.random() * 40) % 20), 0, 1)//new Date()
+      d = new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()))
+      return d.toLocaleDateString()
+    }
+    function unremove(el,name){
+      var div = $(removedUsers[name]);
+      var num = parseInt($(div).attr("id")) + 1;
+      if(num == 11)
+        $('#users').append(div);
+      else{
+        while($('#'+num+".user").length == 0){
+          num++;
+        }
+        $('#'+num+".user").before(div);
+      }
+      $(div).find('button').click(function(){removeUser(this);});
+      delete removedUsers[name];
+      $(el).remove();
+
+    }
+    function removeUser(button){
+      user = $(button).parent();
+      var name = $(user).find('.name').text();
+      alertRemoved(name);
+      removedUsers[name] = ($(user));
+      var button = $("<button class='unremove'>unremove "+name+"</button>");
+      $(button).click(function(){unremove(this,name);});
+      $('#removed').append(button);
+      $(user).remove();
+    }
+    function alertRemoved(name){
+      $('#popup .name').text(name);
+      $('#popup').fadeIn();
+      window.setTimeout("$('#popup').fadeOut();", 3000);
+    }
+    $(document).ready(function(){
+      $('#popup').click(function(){
+        $('#popup').fadeOut();
+      });
+      console.log("lets get it started");
+      var userCount = $('.user').length;
+      while($('.user:not(.template)').length < 10){
+        var newUser = $('.user:first').clone();
+        $(newUser).removeClass('template');
+        $(newUser).attr('id',userCount);
+        $(newUser).find('.name').text('User '+userCount++);
+        $(newUser).find('.title').text(randomTitle());
+        $(newUser).find('img').attr('src',randomImage());
+        $(newUser).find('.bio').text($.paragraph());
+        $(newUser).find('.date').text(randomDate());
+        $(newUser).find('button').click(function(){
+          removeUser(this);
+        });
+        $('#users').append(newUser);
+      }
+    }); 
+  </script>
+  </body>
+</html>
